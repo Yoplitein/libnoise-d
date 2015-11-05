@@ -649,7 +649,7 @@ int fastfloor(double x) {
 }
 
 short[512] modulo_lookup(immutable int modulo) {
-  short temp[512];
+  short[512] temp;
   for(int i = 0; i < perm.length; i++) {
       temp[i] = perm[i] % modulo;
   }
@@ -658,7 +658,7 @@ short[512] modulo_lookup(immutable int modulo) {
 
 //lookup table for selecting gradients, doubled to avoid having to deal
 //with index wrapping.
-immutable short perm[512] = [151,160,137,91,90,15,
+immutable short[512] perm = [151,160,137,91,90,15,
 131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
 190, 6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,
 88,237,149,56,87,174,20,125,136,171,168, 68,175,74,165,71,134,139,48,27,166,
@@ -685,15 +685,15 @@ immutable short perm[512] = [151,160,137,91,90,15,
 49,192,214, 31,181,199,106,157,184, 84,204,176,115,121,50,45,127, 4,150,254,
 138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180];
 
-immutable short permMod12[] = modulo_lookup(12);
-immutable short permMod32[] = modulo_lookup(32);
+immutable short[] permMod12 = modulo_lookup(12);
+immutable short[] permMod32 = modulo_lookup(32);
 
 //gradient tables
-immutable Grad grad3[12] = [ Grad(1,1,0),Grad(-1,1,0),Grad(1,-1,0),Grad(-1,-1,0),
+immutable Grad[12] grad3 = [ Grad(1,1,0),Grad(-1,1,0),Grad(1,-1,0),Grad(-1,-1,0),
                             Grad(1,0,1),Grad(-1,0,1),Grad(1,0,-1),Grad(-1,0,-1),
                             Grad(0,1,1),Grad(0,-1,1),Grad(0,1,-1),Grad(0,-1,-1)];
 
-immutable Grad grad4[32] = [ Grad(0,1,1,1),Grad(0,1,1,-1),Grad(0,1,-1,1),Grad(0,1,-1,-1),
+immutable Grad[32] grad4 = [ Grad(0,1,1,1),Grad(0,1,1,-1),Grad(0,1,-1,1),Grad(0,1,-1,-1),
                             Grad(0,-1,1,1),Grad(0,-1,1,-1),Grad(0,-1,-1,1),Grad(0,-1,-1,-1),
                             Grad(1,0,1,1),Grad(1,0,1,-1),Grad(1,0,-1,1),Grad(1,0,-1,-1),
                             Grad(-1,0,1,1),Grad(-1,0,1,-1),Grad(-1,0,-1,1),Grad(-1,0,-1,-1),

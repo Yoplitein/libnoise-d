@@ -369,7 +369,7 @@ class RidgedMulti : Mod
     int m_octaveCount;
 
     /// Contains the spectral weights for each octave.
-    double m_pSpectralWeights[RIDGED_MAX_OCTAVE];
+    double[RIDGED_MAX_OCTAVE] m_pSpectralWeights;
 
     /// Seed value used by the ridged-multfractal-noise function.
     int m_seed;
